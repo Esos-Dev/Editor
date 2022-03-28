@@ -1,0 +1,440 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Editor</title>
+  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <meta name="author" content="SitePoint">
+
+  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:image" content="image.png">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+     <div id="header" class="text-light bg-dark">
+        <div id="bread" class="sdiv">
+            <a href="/">Home</a>&rsaquo;<a href="index.html">Tools</a>&rsaquo; Notepad
+        </div>
+        <div class="sdiv" id="share">
+            <a id="sharefb" href="" title="Facebook" target="_blank"><img alt="Facebook" src="/lib/icons/glyphicons_all/social/png/glyphicons-social-31-facebook@2xb.png"></a>
+            <a id="sharetw" href="" title="Twitter" target="_blank"><img alt="Twitter" src="/lib/icons/glyphicons_all/social/png/glyphicons-social-32-twitter@2xb.png"></a>
+            <a id="sharewa" href="" title="WhatsApp" target="_blank"><img alt="WhatsApp" src="/lib/icons/glyphicons_all/social/png/glyphicons-social-62-whatsapp@2xb.png"></a>
+            <a id="shareml" href="" title="Email"><img alt="Mail" src="/lib/icons/glyphicons_all/social/png/glyphicons-social-14-e-mail-envelope@2xb.png"></a>
+        </div>
+        <div class="sdiv" id="ad_div">
+
+            <ins class="adsbygoogle adslot" style="display:block" data-ad-client="ca-pub-7356419691275579" data-ad-slot="1390814895"></ins>
+        </div>
+    </div>
+    <div id="menu2">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="fileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+File
+</button>
+            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="fileMenu">
+                <button class="dropdown-item" type="button" onclick="New()"><i class="material-icons-outlined">insert_drive_file</i> New</button>
+                <button class="dropdown-item" type="button" onclick="Open()"><i class="material-icons-outlined">folder_open</i> Open</button>
+                <button class="dropdown-item" type="button" onclick="Save()"><i class="material-icons-outlined">save_alt</i> Save</button>
+                <button class="dropdown-item" type="button" onclick="Save_As()"><i class="material-icons-outlined">save_alt</i> Save As...</button>
+                <button class="dropdown-item" type="button" onclick="Share()"><i class="material-icons-outlined">share</i> Share</button>
+                <button class="dropdown-item" type="button" onclick="Print()"><i class="material-icons-outlined">print</i> Print</button>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Edit
+</button>
+            <div class="dropdown-menu" aria-labelledby="editMenu">
+                <button class="dropdown-item" type="button" id='undo_data' ><i class="material-icons-outlined">undo</i> Undo</button>
+                <button class="dropdown-item" type="button" id='redo_data' ><i class="material-icons-outlined">redo</i> Redo</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item" type="button" onclick="Cut(0)"><i class="material-icons-outlined">content_cut</i> Cut</button>
+                <button class="dropdown-item" type="button" onclick="Copy()"><i class="material-icons-outlined">content_copy</i> Copy</button>
+                <button class="dropdown-item" type="button" onclick="Paste()"><i class="material-icons-outlined">content_paste</i> Paste</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item" type="button" onclick="Del()"><i class="material-icons-outlined">clear</i> Delete</button>
+                <button class="dropdown-item" type="button" onclick="SelectAll()"><i class="material-icons-outlined">select_all</i> Select All</button>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="viewMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+View
+</button>
+            <div class="dropdown-menu" aria-labelledby="viewMenu">
+                <button class="dropdown-item font-button plus" type="button" onclick="IncSize()"><i class="material-icons-outlined">zoom_in</i> Zoom In</button>
+                <button class="dropdown-item font-button minus" type="button" onclick="DecSize()"><i class="material-icons-outlined">zoom_out</i> Zoom Out</button>
+                <div class="dropdown-divider"></div>
+
+                <button class="dropdown-item" type="button" onclick="showPrefModal()"><i class="material-icons-outlined">settings</i> Preferences</button>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="helpMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Help
+</button>
+            <div class="dropdown-menu" aria-labelledby="helpMenu">
+
+                <button type="button" class="dropdown-item" onclick="window.open('notepad_help.html','_blank')"><i class="material-icons-outlined">help</i> Help</button>
+                <button type="button" class="dropdown-item" onclick="window.open('notepad_help.html#feedback','_blank')"><i class="material-icons-outlined">feedback</i> Send feedback</button>
+            </div>
+        </div>
+    </div>
+    <div id="toolbar" class="btn-group" role="group" aria-label="Toolbar">
+
+        <button type="button" title="Open" onClick="Open()" class="btn btn-light"><i class="material-icons-outlined">folder_open</i></button>
+        <button type="button" title="Save to Downloads folder" onClick="Save()" class="btn btn-light"><i class="material-icons-outlined">save_alt</i></button>
+        <button type="button" title="Share" onClick="Share()" class="btn btn-light"><i class="material-icons-outlined">share</i></button>
+        <button type="button" title="Cut" onClick="Cut(0)" class="btn btn-light"><i class="material-icons-outlined">content_cut</i></button>
+        <button type="button" title="Copy" onClick="Copy()" class="btn btn-light"><i class="material-icons-outlined">content_copy</i></button>
+        <button type="button" title="Paste" onClick="Paste()" class="btn btn-light"><i class="material-icons-outlined">content_paste</i></button>
+        <button type="button" title="Undo"  id='undo' class="btn btn-light"><i class="material-icons-outlined">undo</i></button>
+        <button type="button" title="Redo"  id='redo' class="btn btn-light"><i class="material-icons-outlined">redo</i></button>
+        <button type="button" title="Zoom Out" onClick="DecSize()" class="btn btn-light font-button minus"><i class="material-icons-outlined">zoom_out</i></button>
+        <button type="button" title="Zoom In" onClick="IncSize()" class="btn btn-light font-button plus"><i class="material-icons-outlined">zoom_in</i></button>
+        <button type="button" title="Spell Check" id="spellbtn" aria-label="Spell Check" onclick="OnSpell()" class="btn btn-light" aria-pressed="true"><i class="material-icons-outlined">spellcheck</i></button>
+
+        <a href="notepad_help.html" target="_blank" title="Help" class="btn btn-light"><i class="material-icons-outlined">help_outline</i></a>
+        <input type="file" multiple id="fileElem" name="fileElem[]" style="visibility:hidden; width:30px" onchange="loadFile()">
+    </div>
+    <div id="private-alert" class="alert alert-warning alert-dismissible fade show shadow-sm mb-0" role="alert">
+        Avoid using Notepad with Incognito/Private window, or your notes will not be saved to the browser's cache!<br> The Notepad text might be deleted when you delete your browsing history/cache or run disk cleaning application.<br> Use Autosave to
+        save the text to the <i>Downloads</i> folder.
+        <button type="button" class="btn btn-sm btn-outline-secondary ml-3" data-dismiss="alert" aria-label="Close">Close</button>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div id="getFilename" class="row">
+        <label class="col-sm-3 col-form-label">Enter file name</label>
+        <div class="input-group col-sm-9">
+            <input type="text" id="filename" name="filename" placeholder="filename.txt" class="form-control">
+            <div class="input-group-append">
+                <input type="button" id="save" name="save" value="Save" onclick="saveFile()" class="btn btn-light">
+            </div>
+            <div class="input-group-append">
+                <input type="button" id="cancel" name="cancel" value="Cancel" onclick="cancelSaveFile()" class="btn btn-light">
+            </div>
+        </div>
+    </div>
+    <div id="main">
+     <textarea id='lineCounter' wrap='off' readonly>1.</textarea>
+        <textarea class="notepad" id="area" name="S1" spellcheck="false" autofocus></textarea>
+    </div>
+    <div id="bar" class="text-dark bg-light">
+
+        
+  <p aria-live="polite">
+      <strong>
+          <span id="word-count">0</span>
+           words</strong> | 
+           <strong>
+               <span id="character-count">0</span>
+                characters</strong>
+            </p>  
+    
+        </div>
+    <div id="banner">
+        <div>
+            This website uses cookies to improve your experience, analyze traffic and display ads.
+            <a href="https://www.rapidtables.com/about/privacy.html">Learn more</a>
+        </div>
+        <div>
+            <a id="banokbtn">OK</a>
+            <a id="bansetbtn" href="/about/cookies.html">Manage Settings</a>
+        </div>
+    </div>
+    <div class="modal fade" id="prefModal" tabindex="-1" aria-labelledby="prefModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="prefModalLabel">Preferences</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <button type="button" id="resetParamsBtn" class="btn btn-secondary">Reset preferences</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="autoSaveSwitch">Auto save to <i>Downloads</i> folder</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="custom-control custom-switch mr-1">
+                                    <input type="checkbox" id="autoSaveSwitch" class="custom-control-input" checked>
+                                    <label class="custom-control-label" for="autoSaveSwitch"></label>
+                                </div>
+                            </div>
+                            <input type="number" min="1" step="1" id="autoSaveNum" placeholder="1" class="form-control">
+                            <div class="input-group-append">
+                                <select id="autoSaveSel" class="form-control">
+<option>Hours</option>
+<option selected>Days</option>
+</select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textLinesSwitch">Text lines (supported in Chrome)</label>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" id="textLinesSwitch" class="custom-control-input">
+                            <label class="custom-control-label" for="textLinesSwitch">Text lines</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="darkSwitch">Dark mode</label>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" id="darkSwitch" class="custom-control-input">
+                            <label class="custom-control-label" for="darkSwitch">Dark mode</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Font size</label>
+                        <div class="input-group">
+                            <input type="number" id="fontSizeNum" value="16" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text">px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Font family</label>
+                        <select id="fontFamilySel" class="form-control">
+<option>Arial</option>
+<option>Courier</option>
+<option>cursive</option>
+<option>emoji</option>
+<option>fantasy</option>
+<option>Georgia</option>
+<option>Helvetica</option>
+<option>'Lucida Console'</option>
+<option>math</option>
+<option>monospace</option>
+<option>sans-serif</option>
+<option>serif</option>
+<option>Times</option>
+<option>'Times New Roman'</option>
+<option>Verdana</option>
+</select>
+                    </div>
+                    <div class="form-group">
+                        <label>Font weight</label>
+                        <div class="input-group">
+                            <select id="fontWeightSel" class="form-control">
+<option>Normal</option>
+<option style="font-weight:bold">Bold</option>
+</select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="autoSaveModal" tabindex="-1" aria-labelledby="autoSaveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="autoSaveModalLabel">Auto save</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Press the button to save your text to the <i>Downloads</i> folder. The browser will notify file download operation. Check the <i>Downloads</i> folder after the download operation.</label>
+                        <button type="button" id="autoSaveDownBtn" class="btn btn-success btn-block"><i class="material-icons-outlined align-bottom">save_alt</i> Save</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Open auto save preferences</label>
+                        <button type="button" id="autoSavePrefBtn" class="btn btn-secondary btn-block">Open preferences</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+var spellbtn = document.getElementById("spellbtn");
+
+ function OnSpell()
+   {
+      if( spellbtn.classList.contains("active") )
+      {
+         area.setAttribute("spellcheck", "false");
+         spellbtn.classList.remove("active");
+      }
+      else
+      {
+         area.setAttribute("spellcheck", "true");
+         spellbtn.classList.add("active");
+      }
+      area.focus();
+   }
+
+</script>
+
+<script>
+
+ var countTarget = document.querySelector("#area");  
+ var wordCount = document.querySelector("#word-count");  
+ var characterCount = document.querySelector("#character-count");  
+ var count = function () {  
+  var characters = countTarget.value;  
+  var characterLength = characters.length;  
+  var words = characters.split(/[\n\r\s]+/g).filter(function (word) {  
+   return word.length > 0;  
+  });  
+  wordCount.innerHTML = words.length;  
+  characterCount.innerHTML = characterLength;  
+ };  
+ count();  
+ window.addEventListener(  
+  "input",  
+  function (event) {  
+   if (event.target.matches("#area")) {  
+    count();  
+   }  
+  },  
+  false  
+ );  
+
+</script>
+    
+    
+    <script>
+             var resetParamsBtn = document.getElementById("resetParamsBtn");
+       resetParamsBtn.onclick = function() {
+                resetParams();
+            }
+
+            function resetParams() {
+            resetParamsFlag = true;
+            alert("Please reload page to finish reset");
+        }
+
+     </script>
+
+<script>
+
+
+var fontSizeNum = document.getElementById("fontSizeNum");
+  var fontWeightSel = document.getElementById("fontWeightSel");
+
+   var fontFamilySel = document.getElementById("fontFamilySel");
+           var paramsInit = {
+            filename: "",
+            autoSaveDelay: 86400000, //ms
+            autoSaveLast: 0, //ms
+            textLines: true,
+            theme: 0, //0-normal 1-dark
+            fontSize: 14,
+            fontFamilySel: 0, //Arial
+            fontWeightSel: 0 //Normal
+        };
+
+
+      fontSizeNum.onchange = function() {
+                setFont();
+            }
+
+      fontWeightSel.onchange = function() {
+                setFont();
+            }
+
+
+   fontFamilySel.onchange = function() {
+                setFont();
+            }
+
+          function initFontSel() {
+            // Init font family select
+            for (var i = 0; i < fontFamilySel.options.length; i++) {
+                var ff = fontFamilySel.options[i];
+                ff.style.fontFamily = ff.value;
+            }
+        }
+
+
+function getParams() {
+            filename.value = params.filename;
+            //if( params.autoSave==0 ) {
+            autoSaveSwitch.checked = (params.autoSaveDelay > 0) ? true : false;
+            if (params.autoSaveDelay < 3600000) params.autoSaveDelay = 3600000;
+            autoSaveNum.value = (params.autoSaveDelay >= 86400000) ? Math.round(params.autoSaveDelay / 86400000) : Math.round(params.autoSave / 3600000);
+            autoSaveSel.selectedIndex = (params.autoSaveDelay < 86400000) ? "0" : "1";
+            textLinesSwitch.checked = params.textLines;
+            darkmodeSwitch.checked = (params.theme == 0) ? false : true;
+            fontSizeNum.value = params.fontSize;
+            fontFamilySel.selectedIndex = params.fontFamilySel;
+            fontWeightSel.selectedIndex = params.fontWeightSel;
+        }
+
+
+  function setFont() {
+            area.style.fontSize = fontSizeNum.value + "px";
+            area.style.fontFamily = fontFamilySel.options[fontFamilySel.selectedIndex].text;
+            area.style.fontWeight = (fontWeightSel.selectedIndex == 0) ? "normal" : "bold";
+            params.fontSize = fontSizeNum.value;
+            params.fontFamilySel = fontFamilySel.selectedIndex;
+            params.fontWeightSel = fontWeightSel.selectedIndex;
+        }
+
+</script>
+
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+     <script src="js/scripts.js"></script>
+
+     <script src="js/esos.js"></script>
+ <script src="js/undoredo.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".font-button").bind("click", function () {
+                var size = parseInt($('#area,#lineCounter').css("font-size"));
+                if ($(this).hasClass("plus")) {
+                    size = size + 2;
+                } else {
+                    size = size - 2;
+                    if (size <= 10) {
+                        size = 10;
+                    }
+                }
+                $('#area,#lineCounter').css("font-size", size);
+            });
+        });
+    </script>
+
+<script src="js/linenumber.js"></script>
+ <script src="js/darkmode.js"></script>
+
+</body>
+</html>
